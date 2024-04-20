@@ -95,7 +95,7 @@ const BarChart = ({ peopleData, congestArray }: Props) => {
             const dataIndex = context.dataIndex;
             const value = peopleData[dataIndex];
 
-            return `인구 수 : ${Number(
+            return `예상 인구 수 : ${Number(
               value.FCST_PPLTN_MIN
             ).toLocaleString()} ~ ${Number(
               value.FCST_PPLTN_MAX

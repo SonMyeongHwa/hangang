@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import CongestBar from "../CongestBar/CongestBar";
 import BarChart from "../BarChart/BarChart";
+import { useState } from "react";
 
 type Props = {
   visible: boolean;
@@ -38,6 +39,8 @@ const congestArray = [
 ];
 
 const Modal = ({ visible, onClose, areaName }: Props) => {
+  const [rotation, setRotation] = useState(false);
+  
   const { data, refetch } = useQuery({
     queryKey: [areaName],
     queryFn: () => getCityPerson(areaName),
@@ -49,6 +52,12 @@ const Modal = ({ visible, onClose, areaName }: Props) => {
 
   const congestMsg = cityData?.AREA_CONGEST_MSG;
   const splitMsg = congestMsg ? congestMsg.split(/(?<=\.)\s+/) : [];
+
+  const handleClickRefetch = async () => {
+    setRotation(true);
+    await refetch();
+    setRotation(false);
+  };
 
   return (
     <Container visible={visible}>
@@ -66,17 +75,20 @@ const Modal = ({ visible, onClose, areaName }: Props) => {
           <Content>
             <Title>
               <div className="title">
-                <span className="fontBold">{cityData.AREA_NM}</span> 실시간 인구 현황
+                <span className="fontBold">{cityData.AREA_NM}</span> 실시간 인구
+                현황
               </div>
               <div className="time">
                 <span>{cityData.PPLTN_TIME} 기준</span>
-                <Image
-                  src={"/images/redo/redo.svg"}
-                  alt="redo"
-                  width={12}
-                  height={12}
-                  onClick={() => refetch()}
-                />
+                <span className={rotation ? "rotation" : ""}>
+                  <Image
+                    src={"/images/redo/redo.svg"}
+                    alt="redo"
+                    width={12}
+                    height={12}
+                    onClick={handleClickRefetch}
+                  />
+                </span>
               </div>
             </Title>
             <Congest>
@@ -93,8 +105,8 @@ const Modal = ({ visible, onClose, areaName }: Props) => {
                 />
               </div>
               <div className="people fontBold">
-                실시간 인구 : {Number(cityData.AREA_PPLTN_MIN).toLocaleString()} ~{" "}
-                {Number(cityData.AREA_PPLTN_MAX).toLocaleString()}명
+                실시간 인구 : {Number(cityData.AREA_PPLTN_MIN).toLocaleString()}{" "}
+                ~ {Number(cityData.AREA_PPLTN_MAX).toLocaleString()}명
               </div>
             </Congest>
             <ul className="msg">
@@ -188,6 +200,17 @@ const Title = styled.div`
 
     img {
       cursor: pointer;
+    }
+
+    .rotation {
+      animation: rotate_image 2s linear infinite;
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes rotate_image {
+      100% {
+        transform: rotate(360deg);
+      }
     }
   }
 `;
