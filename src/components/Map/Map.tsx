@@ -9,6 +9,12 @@ const AREA_LIST = [
     path: "gangseo",
   },
   {
+    name: "광나루한강공원",
+    x: 37.52664933094914,
+    y: 127.1045856927201,
+    path: "gwangnaru",
+  },
+  {
     name: "난지한강공원",
     x: 37.567048917472626,
     y: 126.87560604613071,
@@ -91,15 +97,15 @@ function Map() {
         const mapContainer = document.getElementById("map"), // 지도를 표시할 div
           mapOption = {
             center: new window.kakao.maps.LatLng(
-              37.552111024792865,
-              126.98279911577391
+              37.576899231359136,
+              126.96815494601028
             ), // 지도의 중심좌표
-            level: 7, // 지도의 확대 레벨
+            level: 8, // 지도의 확대 레벨
           };
 
         const map = new window.kakao.maps.Map(mapContainer, mapOption);
         // 마우스 휠과 모바일 터치를 이용한 지도 확대, 축소를 막는다
-        map.setZoomable(false);
+        //map.setZoomable(false);
 
         const imageSize = new window.kakao.maps.Size(60, 65), // 마커이미지의 크기입니다
           imageOption = { offset: new window.kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
