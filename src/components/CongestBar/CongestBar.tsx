@@ -36,10 +36,11 @@ export default CongestBar;
 
 const Container = styled.div`
   margin: 10px 0;
+  width: 100%;
 
   .color-box {
     display: inline-block;
-    width: 85px;
+    width: 25%;
     height: 10px;
     text-align: center;
     position: relative;
