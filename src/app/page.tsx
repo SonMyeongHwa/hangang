@@ -3,6 +3,7 @@ import Button from "@/components/Button/Button";
 import styled from "@emotion/styled";
 import { AREA_LIST } from "../../public/static/common";
 import Image from "next/image";
+import Link from "next/link";
 
 const Page = () => {
   return (
@@ -16,7 +17,9 @@ const Page = () => {
       <div>원하는 한강공원을 선택하여 실시간 인구 수를 확인하세요!</div>
       <ButtonWrap>
         {AREA_LIST.map((item) => (
-          <Button key={item.path} name={item.name} />
+          <Link href={`/${item.path}`} key={item.path}>
+            <Button name={item.name} />
+          </Link>
         ))}
       </ButtonWrap>
     </Container>
