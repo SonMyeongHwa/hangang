@@ -57,7 +57,7 @@ function Map({ location }:Props) {
   }, []);
 
   return (
-      <div style={{ width: "350px", height: "250px" }} id="map" />
+      <div style={{ width: "100%", height: "250px" }} id="map" />
   );
 }
 

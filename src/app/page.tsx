@@ -51,4 +51,6 @@ const ButtonWrap = styled.div`
   flex-wrap: wrap;
   gap: 12px 8px;
   justify-content: center;
+  box-sizing: border-box;
+  padding: 0 10px;
 `;

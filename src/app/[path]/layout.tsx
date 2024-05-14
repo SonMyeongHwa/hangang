@@ -11,7 +11,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div style={{background: "white"}}>
       <Header />
       <div style={{ height: "90vh", overflowY: "auto" }}>{children}</div>
     </div>
