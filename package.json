@@ -13,8 +13,10 @@
     "@emotion/styled": "^11.11.5",
     "@tanstack/react-query": "^5.29.2",
     "axios": "^1.6.8",
+    "chart.js": "^4.4.2",
     "next": "14.2.0",
     "react": "^18",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18"
   },
   "devDependencies": {
@@ -23,6 +25,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.0",
+    "kakao.maps.d.ts": "^0.1.39",
     "typescript": "^5"
   }
 }
