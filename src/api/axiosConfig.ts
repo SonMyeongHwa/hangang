@@ -5,4 +5,5 @@ export const API = axios.create({
     "Content-type": "application/json",
   },
   baseURL: `http://openapi.seoul.go.kr:8088/${process.env.NEXT_PUBLIC_ACCESSKEY}/json`,
+  withCredentials: false,
 });
