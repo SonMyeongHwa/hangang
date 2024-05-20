@@ -10,16 +10,17 @@ import { color } from "@/styles/color";
 import CongestBar from "@/components/CongestBar/CongestBar";
 import BarChart from "@/components/BarChart/BarChart";
 import Map from "@/components/Map/Map";
-import { useParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const Page = () => {
-  const { path } = useParams();
-  const areaData = AREA_LIST.find(item => item.path === path);
+  const pathname = usePathname();
+  const decodedPath = pathname ? decodeURIComponent(pathname.substring(1)) : "";
+  const areaData = AREA_LIST.find((item) => item.name === decodedPath);
   const [rotation, setRotation] = useState(false);
 
   const { data, refetch } = useQuery({
-    queryKey: [areaData?.name],
-    queryFn: () => getCityPerson(areaData?.name as unknown as string),
+    queryKey: [decodedPath],
+    queryFn: () => getCityPerson(decodedPath),
   });
 
   const cityData = data?.["SeoulRtd.citydata_ppltn"][0];
